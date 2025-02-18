@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface RolRepository extends JpaRepository<Rol, Integer> {
-    @Query("SELECT r FROM Rol r JOIN UserRol ur ON r.rolId = ur.rolId WHERE ur.userId = :userId")
+    @Query("SELECT r FROM Rol r " +
+           "JOIN UserRol ur ON r.rolId = ur.id.rolId " +
+           "WHERE ur.id.userId = :userId")
     List<Rol> findRolesByUserId(@Param("userId") Integer userId);
 } 
