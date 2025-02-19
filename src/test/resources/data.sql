@@ -19,7 +19,7 @@ INSERT INTO tbl_user (
     last_updated_by
 ) VALUES (
     'test@example.com',
-    '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu',
+    '$2a$12$hK8etblz6GUCYHJ63KoYR.mx1Kk2Pk0u9KCMTQtTf/eFTjEYYYvYu',
     'Test',
     'User',
     'Last',
