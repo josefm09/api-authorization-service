@@ -3,6 +3,7 @@ package com.ecommerce.auth.controller;
 import com.ecommerce.auth.dto.LoginRequestDTO;
 import com.ecommerce.auth.dto.LoginResponseDTO;
 import com.ecommerce.auth.service.AuthService;
+import com.ecommerce.e_utils.model.response.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -44,15 +45,18 @@ class AuthControllerTest {
         loginRequest.setEmail(TEST_EMAIL);
         loginRequest.setPassword(TEST_PASSWORD);
 
+        Response response = new Response();
+
         LoginResponseDTO loginResponse = new LoginResponseDTO(TEST_TOKEN, TEST_EMAIL);
 
-        when(authService.login(any(LoginRequestDTO.class))).thenReturn(loginResponse);
+        response.setData(loginResponse);
+        when(authService.login(any(LoginRequestDTO.class))).thenReturn(response);
 
         // When/Then
-        mockMvc.perform(post("/api/auth/login")
+        mockMvc.perform(post("/api/v1/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.email").value(TEST_EMAIL));
+                .andExpect(jsonPath("$.data.email").value(TEST_EMAIL));
     }
 } 

@@ -28,7 +28,9 @@ public class SecurityConfig {
                 auth.requestMatchers(
                     new AntPathRequestMatcher("/api/auth/**"),
                     new AntPathRequestMatcher("/api/auth/login"),
-                    new AntPathRequestMatcher("/error")
+                    new AntPathRequestMatcher("/error"),
+                    new AntPathRequestMatcher("/swagger-ui/**"),
+                    new AntPathRequestMatcher("/v3/**")
                 ).permitAll()
                 .anyRequest().authenticated())
             .exceptionHandling(exception -> 

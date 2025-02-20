@@ -1,0 +1,18 @@
+
+services:
+  mysql:
+    image: mysql:8.0  # Use the official MySQL 8.0 image
+    container_name: mysql_db  # Name of the container
+    environment:
+      MYSQL_ROOT_PASSWORD: secure  # Root user password
+      MYSQL_DATABASE: ecommerce  # Replace with your database name
+      MYSQL_USER: skillup  # Replace with your MySQL username
+      MYSQL_PASSWORD: atoseviden  # Replace with your MySQL password
+    ports:
+      - "3306:3306"  # Map port 3306 on the host to port 3306 in the container
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persist MySQL data to a volume
+    restart: always  # Restart the container if it stops
+
+volumes:
+  mysql_data:  # Define a volume for MySQL data persistence
